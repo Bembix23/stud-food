@@ -5,6 +5,9 @@ import { Text, View, Image, StyleSheet, Pressable} from 'react-native';
 export default function FirstStep() {
   return (
     <View style={ commonStyles.welcomeContainer }>
+      <Pressable style={ styles.skipButton } onPress={() => {router.push('/')}}>
+        <Text style={styles.skipButtonText}>Skip</Text>
+      </Pressable>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
       <Text style={ styles.stepTitle }>Simple</Text>
       <Image source={require('../../assets/images/casserole.png')} style={ styles.stepImage }/>
@@ -37,6 +40,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: 300,
     margin: 30,
+  },
+  skipButton: {
+    left: 150,
+  },
+  skipButtonText: {
+    color: "#358510",
+    fontWeight: "500",
+    fontSize: 16,
   },
   stepButton: {
     marginTop: 10,
