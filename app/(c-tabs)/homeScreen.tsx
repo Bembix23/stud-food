@@ -7,44 +7,31 @@ export default function HomeScreen() {
     <View style={commonStyles.homeContainer}>
       <Image source={require('../../assets/images/photo-profil.png')} style={ commonStyles.profilePicture }/>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
+      <Text style={ [commonStyles.stepTitle, styles.stepTitle] }>Mes Photos</Text>
+      <Pressable style={styles.bottomButton} onPress={() => router.push('/somePage')}>
+        <Text style={styles.buttonText}>Aller à une autre page</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  stepTitle:{
+    marginTop: 10,
+  },
+  bottomButton: {
+    position: 'absolute',
+    bottom: 20, // Ajustez cette valeur pour placer le bouton juste au-dessus de la navigation par onglets
+    backgroundColor: '#FFA800',
+    padding: 15,
+    borderRadius: 10,
     alignItems: 'center',
-    gap: 8,
-    padding: 16,
-  },
-  stepContainer: {
-    gap: 8,
-    paddingHorizontal: 16,
-    paddingBottom: 20,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-  },
-  welcomeButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    width: 275,
+    alignSelf: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
+    fontWeight: 'bold',
     fontSize: 16,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  reactLogo: {
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
-    marginTop: Platform.OS === 'ios' ? 60 : 40,
   },
 });
