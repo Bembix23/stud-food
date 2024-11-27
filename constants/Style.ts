@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { FontFamily, FontSize, Color, Border } from "./GlobalStyles";
 
 export const commonStyles = StyleSheet.create({
     welcomeContainer: {
