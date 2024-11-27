@@ -7,12 +7,16 @@ import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import { useColorScheme } from "@/hooks/useColorScheme";
 import "../../stud-food/FirebaseConfig";
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AppLoading from 'expo-app-loading';
 
 // Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [isLoading, setIsLoading] = useState(true);
   const colorScheme = useColorScheme();
+  const [tutorialCompleted, setTutorialCompleted] = useState(false);
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
@@ -24,6 +28,23 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
+    const checkTutorialCompletion = async () => {
+      try {
+        const value = await AsyncStorage.getItem('tutorialCompleted');
+        if (value === 'true') {
+          setTutorialCompleted(true);
+        }
+      } catch (e) {
+        console.error('Failed to load the data from storage');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkTutorialCompletion();
+  }, []);
+
+  useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
@@ -33,7 +54,17 @@ export default function RootLayout() {
     return null;
   }
 
-  eturn (
+  if (isLoading) {
+    return <AppLoading />;
+  }
+
+  if (tutorialCompleted) {
+    router.push('../(user)');
+  } else {
+    router.push('/(a-tutorial)/firstStep');
+  }
+
+  return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(a-tutorial)" options={{ headerShown: false }} />

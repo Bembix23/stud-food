@@ -1,6 +1,18 @@
 import { commonStyles } from '@/constants/Style';
 import { router } from 'expo-router';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
 import { Text, View, Image, StyleSheet, Pressable} from 'react-native';
+
+const ThirdStep = () => {
+  const completeTutorial = async () => {
+    try {
+      await AsyncStorage.setItem('tutorialCompleted', 'true');
+      router.push('../(b-user)');
+    } catch (e) {
+      console.error('Failed to save the data to the storage');
+    }
+  };
+}
 
 export default function ThridStep() {
   return (
