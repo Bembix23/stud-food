@@ -6,9 +6,9 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useColorScheme } from "@/hooks/useColorScheme";
 
-import '../../stud-food/FirebaseConfig'; 
+import "../../stud-food/FirebaseConfig";
 
 // Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
 SplashScreen.preventAutoHideAsync();
@@ -36,15 +36,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tutorial)" options={{ headerShown: false }} />
         <Stack.Screen name="(user)" options={{ headerShown: false }} />
         <Stack.Screen name="(tvbs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found"/>
-        <Stack.Screen name="Login" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
 
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
