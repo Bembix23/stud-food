@@ -7,14 +7,16 @@ import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import { useColorScheme } from "@/hooks/useColorScheme";
 import "../../stud-food/FirebaseConfig";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [isLoading, setIsLoading] = useState(true);
   const colorScheme = useColorScheme();
+  const [tutorialCompleted, setTutorialCompleted] = useState(false);
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
     'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
     'Pattaya-Regular': require('../assets/fonts/Pattaya-Regular.ttf'),
@@ -24,10 +26,37 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
+    const checkTutorialCompletion = async () => {
+      try {
+        const value = await AsyncStorage.getItem('tutorialCompleted');
+        if (value === 'true') {
+          setTutorialCompleted(true);
+        }
+      } catch (e) {
+        console.error('Failed to load the data from storage');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkTutorialCompletion();
+  }, []);
+
+  useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (tutorialCompleted) {
+        router.push('../(b-user)/');
+      } else {
+        router.push('../(a-tutorial)/');
+      }
+    }
+  }, [isLoading, tutorialCompleted]);
 
   if (!loaded) {
     return null;
