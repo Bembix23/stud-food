@@ -14,7 +14,7 @@ export default function ThridStep() {
       <Text style={ commonStyles.stepText }>Pourquoi dépenser une fortune quand on peut le faire sois même pour{' '}
         <Text style={ commonStyles.underlignText }>moins chère</Text> !
       </Text>
-      <Pressable style={commonStyles.stepButton} onPress={() => {router.push('../(user)/')}}>
+      <Pressable style={commonStyles.stepButton} onPress={() => {router.push('../(b-user)/')}}>
         <Text style={commonStyles.buttonText}>Suivant</Text>
       </Pressable>
       <Image source={require('../../assets/images/step3.png')} style={ commonStyles.stepStateImage }/>

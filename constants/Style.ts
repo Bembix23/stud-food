@@ -70,5 +70,16 @@ export const commonStyles = StyleSheet.create({
         height: 6,
         marginTop: 50,
     },
+    homeContainer:{
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    profilePicture:{
+        marginTop: 10,
+        width: 50,
+        height: 50,
+        left: "35%",
+    },
 })
 

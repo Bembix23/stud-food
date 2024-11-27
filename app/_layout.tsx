@@ -3,11 +3,9 @@ import { useFonts } from 'expo-font';
 import { router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
-
 import { useColorScheme } from "@/hooks/useColorScheme";
-
 import "../../stud-food/FirebaseConfig";
 
 // Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
@@ -35,15 +33,13 @@ export default function RootLayout() {
     return null;
   }
 
-  return (
+  eturn (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tutorial)" options={{ headerShown: false }} />
-        <Stack.Screen name="(user)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tvbs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(a-tutorial)" options={{ headerShown: false }} />
+        <Stack.Screen name="(b-user)" options={{ headerShown: false }} />
+        <Stack.Screen name="(c-tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

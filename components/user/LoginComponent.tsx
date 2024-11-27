@@ -29,7 +29,7 @@ const LoginComponent = () => {
     try {
       const userCredentials = await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in:', userCredentials.user.email);
-      router.push('./(tabs)/index'); 
+      router.push('../(c-tabs)/homeScreen'); 
     } catch (err: unknown) {
       if (err instanceof FirebaseError) { 
         setError(err.message);
@@ -59,7 +59,7 @@ const LoginComponent = () => {
       const user = userCredentials.user;
       console.log('Utilisateur inscrit avec succès :', user.email);
       Alert.alert('Succès', 'Inscription réussie !');
-      router.push('./(tabs)/index'); 
+      router.push('../(c-tabs)/index'); 
     } catch (err: unknown) {
       if (err instanceof FirebaseError) { 
         setError(err.message);
