@@ -33,7 +33,7 @@ export default function RootLayout() {
     return null;
   }
 
-  eturn (
+  return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(a-tutorial)" options={{ headerShown: false }} />
