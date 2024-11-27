@@ -4,7 +4,6 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import { auth } from '../../FirebaseConfig';
 import { FirebaseError } from 'firebase/app';
 import { useRouter } from 'expo-router';
-import { FontFamily, FontSize, Color, Border } from "../../constants/GlobalStyles";
 import { commonStyles } from "@/constants/Style";
 
 const LoginComponent = () => {
