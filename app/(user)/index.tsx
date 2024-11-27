@@ -1,19 +1,25 @@
-import { router } from 'expo-router';
-import { Text, View, Image, StyleSheet, Pressable} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { commonStyles } from '@/constants/Style';
 import LoginComponent from '@/components/user/LoginComponent';
 
 export default function Login() {
   return (
-    <View style={ commonStyles.welcomeContainer }>
-      <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
-      <Text style={ styles.stepTitle }>Connectez-vous !</Text>
+    <View style={commonStyles.welcomeContainer}>
+      <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
+      <Text style={styles.stepTitle}>Connectez-vous !</Text>
       <LoginComponent />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  stepTitle: {
+    fontSize: 24,
+    fontWeight: '400',
+    color: "red",
+    fontFamily: "FugazOne",
+    marginTop: 40,
+  },
   welcomeImage: {
     width: 261, 
     height: 210, 
@@ -34,12 +40,5 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 16,
     margin: "auto",
-  },
-  stepTitle: {
-    fontSize: 24,
-    fontWeight: 400,
-    color: "red",
-    fontFamily: "FugazOne",
-    marginTop: 40,
   },
 });
