@@ -7,8 +7,7 @@ import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import { useColorScheme } from "@/hooks/useColorScheme";
 import "../../stud-food/FirebaseConfig";
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
-import AppLoading from 'expo-app-loading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
 SplashScreen.preventAutoHideAsync();
@@ -18,7 +17,6 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [tutorialCompleted, setTutorialCompleted] = useState(false);
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
     'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
     'Pattaya-Regular': require('../assets/fonts/Pattaya-Regular.ttf'),
@@ -50,18 +48,18 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
+  useEffect(() => {
+    if (!isLoading) {
+      if (tutorialCompleted) {
+        router.push('../(b-user)/');
+      } else {
+        router.push('../(a-tutorial)/');
+      }
+    }
+  }, [isLoading, tutorialCompleted]);
+
   if (!loaded) {
     return null;
-  }
-
-  if (isLoading) {
-    return <AppLoading />;
-  }
-
-  if (tutorialCompleted) {
-    router.push('../(user)');
-  } else {
-    router.push('/(a-tutorial)/firstStep');
   }
 
   return (
