@@ -1,18 +1,18 @@
-import { Image, StyleSheet, Platform, View, Pressable, Text } from 'react-native';
+import { Image, StyleSheet, Platform, View, Pressable, Text, TextInput } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import React from 'react';
+import { SearchBar } from 'react-native-screens';
 
 export default function HomeScreen() {
   return (
     <View style={commonStyles.homeContainer}>
       <Image source={require('../../assets/images/photo-profil.png')} style={ commonStyles.profilePicture }/>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
-      <Text style={ [commonStyles.stepTitle, styles.stepTitle] }>Mes Photos</Text>
-      <Pressable style={styles.bottomButton} onPress={() => router.push('./')}>
-        <Text style={styles.buttonText}>Prendre une photo</Text>
-        <IconSymbol size={20} name="camera.fill" color="#FFFFFF" />
-      </Pressable>
+      <View style={ styles.searchBar }>
+        <TextInput placeholder='Cherche ton plat' placeholderTextColor={ 'gray' } style={ styles.SearchBarText }/>
+      </View>
     </View>
   );
 }
@@ -20,6 +20,19 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   stepTitle:{
     marginTop: 10,
+  },
+  searchBar:{
+    marginTop: 10,
+    display: 'flex',
+    alignItems: 'flex-start',
+    borderRadius: 9999,
+    backgroundColor: '#CECECE',
+    padding: 10,
+    width: 275,
+  },
+  SearchBarText:{
+    fontSize: 12,
+    marginBottom: 1,
   },
   bottomButton: {
     position: 'absolute',
