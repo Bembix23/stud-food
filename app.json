@@ -11,7 +11,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to take photos."
+        "NSCameraUsageDescription": "Cette application utilise la caméra pour prendre des photos.",
+        "NSPhotoLibraryUsageDescription": "Cette application accède à votre photothèque pour télécharger des photos."
       }
     },
     "android": {
@@ -19,7 +20,15 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.pauloducap.studfood"
     },
     "web": {
       "bundler": "metro",

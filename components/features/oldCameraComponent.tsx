@@ -1,4 +1,5 @@
-import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { Camera, CameraType, useCameraPermissions } from "expo-camera"; // Corrected import
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -27,13 +28,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing}>
+      <Camera style={styles.camera} type={facing}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
         </View>
-      </CameraView>
+      </Camera>
     </View>
   );
 }
@@ -68,4 +69,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
