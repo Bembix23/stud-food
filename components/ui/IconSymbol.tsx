@@ -13,6 +13,7 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'photo.fill': 'photo',
   'camera.fill': 'camera',
+  'magnifyingglass': 'search',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
 } as Partial<
