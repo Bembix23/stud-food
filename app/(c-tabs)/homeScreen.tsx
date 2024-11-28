@@ -1,12 +1,17 @@
-import { Image, StyleSheet, Platform, View, Pressable, Text } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
+import CameraComponent from '@/components/features/CameraComponent';
 
 export default function HomeScreen() {
   return (
     <View style={commonStyles.homeContainer}>
-      <Image source={require('../../assets/images/photo-profil.png')} style={ commonStyles.profilePicture }/>
-      <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
+      <Image
+        source={require('../../assets/images/photo-profil.png')}
+        style={commonStyles.profilePicture}
+      />
+      <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
+      <CameraComponent />
     </View>
   );
 }
