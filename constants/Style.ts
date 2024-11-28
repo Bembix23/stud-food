@@ -76,7 +76,7 @@ export const commonStyles = StyleSheet.create({
         marginTop: 20,
     },
     profilePicture:{
-        marginTop: 10,
+        marginTop: 30,
         width: 50,
         height: 50,
         left: "35%",

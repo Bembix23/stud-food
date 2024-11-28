@@ -13,9 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [isLoading, setIsLoading] = useState(true);
   const colorScheme = useColorScheme();
-  const [tutorialCompleted, setTutorialCompleted] = useState(false);
   const [loaded] = useFonts({
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
     'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
@@ -26,37 +24,10 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    const checkTutorialCompletion = async () => {
-      try {
-        const value = await AsyncStorage.getItem('tutorialCompleted');
-        if (value === 'true') {
-          setTutorialCompleted(true);
-        }
-      } catch (e) {
-        console.error('Failed to load the data from storage');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    checkTutorialCompletion();
-  }, []);
-
-  useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (tutorialCompleted) {
-        router.push('../(b-user)/');
-      } else {
-        router.push('../(a-tutorial)/');
-      }
-    }
-  }, [isLoading, tutorialCompleted]);
 
   if (!loaded) {
     return null;
@@ -65,6 +36,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(a-tutorial)" options={{ headerShown: false }} />
         <Stack.Screen name="(b-user)" options={{ headerShown: false }} />
         <Stack.Screen name="(c-tabs)" options={{ headerShown: false }} />
