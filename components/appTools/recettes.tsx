@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, SafeAreaView, ScrollView, Pressable } from 'react-native'
 import React from 'react'
-import { router, useNavigation } from 'expo-router';
+import { router } from 'expo-router';
 
 interface RecettesProps {
   filtre: { strCategory: string; strCategoryThumb: string }[];
@@ -8,7 +8,6 @@ interface RecettesProps {
 }
 
 export default function Recettes({filtre, recette}: RecettesProps) {
-    const navigation = useNavigation();
   return (
     <>
         {filtre.length==0 || recette.length==0 ? null : (
@@ -16,7 +15,7 @@ export default function Recettes({filtre, recette}: RecettesProps) {
                 <ScrollView style={styles.scrollView}>
                     <View style={styles.recettesContainer}>
                     {recette.map((item, i) => {
-                        return <RecetteCarte navigation={navigation} key={i} item={item} index={i}/>
+                        return <RecetteCarte key={i} item={item} index={i}/>
                     })}
                     </View>
                 </ScrollView>
@@ -31,10 +30,16 @@ interface RecetteItem {
   strMealThumb: string;
 }
 
-const RecetteCarte = ({item, index, navigation}: {item: RecetteItem, index: number, navigation: any})=>{
+const RecetteCarte = ({item, index}: {item: RecetteItem, index: number})=>{
+    const handlePress = () => {
+        router.push({
+          pathname: '/recettesDetails',
+          params: { item: JSON.stringify(item) },
+        });
+      };
     return (
         <View style={styles.recetteCard}>
-            <Pressable style={styles.pressable} onPress={() => navigation.navigate('recettesDetails', {...item})}>
+            <Pressable style={styles.pressable} onPress={() => {router.push({ pathname: '/recettesDetails'})}}>
                 <Image source={{uri: item.strMealThumb}} style={styles.recetteImage}/>
                 <Text style={styles.recetteTitre}>{item.strMeal}</Text>
             </Pressable>
