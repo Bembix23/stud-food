@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Platform, View, Pressable, Text, TextInput } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
+import CameraComponent from '@/components/features/CameraComponent';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import React from 'react';
 import { SearchBar } from 'react-native-screens';
@@ -8,11 +9,16 @@ import { SearchBar } from 'react-native-screens';
 export default function HomeScreen() {
   return (
     <View style={commonStyles.homeContainer}>
-      <Image source={require('../../assets/images/photo-profil.png')} style={ commonStyles.profilePicture }/>
-      <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
+      <Image
+        source={require('../../assets/images/photo-profil.png')}
+        style={commonStyles.profilePicture}
+      />
+      <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
       <View style={ styles.searchBar }>
         <TextInput placeholder='Cherche ton plat' placeholderTextColor={ 'gray' } style={ styles.SearchBarText }/>
+        <CameraComponent />
       </View>
+
     </View>
   );
 }
