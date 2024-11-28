@@ -2,6 +2,7 @@ import { Image, StyleSheet, Platform, View, Pressable, Text } from 'react-native
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import CameraComponent from '@/components/features/CameraComponent';
 
 export default function HomeScreen() {
   return (
@@ -9,6 +10,7 @@ export default function HomeScreen() {
       <Image source={require('../../assets/images/photo-profil.png')} style={ commonStyles.profilePicture }/>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>
       <Text style={ [commonStyles.stepTitle, styles.stepTitle] }>Mes Photos</Text>
+      <CameraComponent />
       <Pressable style={styles.bottomButton} onPress={() => router.push('./')}>
         <Text style={styles.buttonText}>Prendre une photo</Text>
         <IconSymbol size={20} name="camera.fill" color="#FFFFFF" />
