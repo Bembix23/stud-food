@@ -10,16 +10,35 @@ import Recettes from '@/components/appTools/recettes';
 export default function HomeScreen() {
   const[filtreActif, setFiltreActif] = useState('Beef');
   const [filtre, setFiltre] = useState([]);
+  const [recette, setRecette] = useState([]);
 
   useEffect ( ()=>{
-    getFiltre ();
+    getFiltre();
+    getRecette();
   },[])
+
+  const changementCategorie = (category: string) => {
+    getRecette(category);
+    setFiltreActif(category);
+    setRecette([]);
+  }
 
   const getFiltre = async ()=>{
     try {
-      const response = await axios. get ('https://themealdb.com/api/json/v1/1/categories.php'); 
+      const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php'); 
       if (response && response.data){
-        setFiltre (response.data.categories);
+        setFiltre(response.data.categories ?? []);
+      }
+    }catch (err: any){
+      console.log('error: ',err.message);
+    }
+  }
+
+  const getRecette = async (category="Beef") =>{
+    try{
+      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+      if (response && response.data){
+        setRecette(response.data.meals ?? []);
       }
     }catch (err: any){
       console.log('error: ',err.message);
@@ -35,11 +54,11 @@ export default function HomeScreen() {
           <IconSymbol size={20} name="magnifyingglass" color="#000000" />
         </View>
       </View>
-      <View>
-        <Filtres filtre={filtre} filtreActif={filtreActif} setFiltreActif={setFiltreActif}/>
+      <View style={{height:120}}>
+        <Filtres filtre={filtre} filtreActif={filtreActif} changementCategorie={changementCategorie}/>
       </View>
       <View>
-        <Recettes/>
+        <Recettes recette={recette} filtre={filtre}/>
       </View>
     </View>
   );
