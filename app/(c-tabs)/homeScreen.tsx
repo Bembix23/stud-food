@@ -1,7 +1,10 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
+import { Image, StyleSheet, Platform, View, Pressable, Text, TextInput } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
 import CameraComponent from '@/components/features/CameraComponent';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import React from 'react';
+import { SearchBar } from 'react-native-screens';
 
 export default function HomeScreen() {
   return (
@@ -11,45 +14,49 @@ export default function HomeScreen() {
         style={commonStyles.profilePicture}
       />
       <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
-      <CameraComponent />
+      <View style={ styles.searchBar }>
+        <TextInput placeholder='Cherche ton plat' placeholderTextColor={ 'gray' } style={ styles.SearchBarText }/>
+        <CameraComponent />
+      </View>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  stepTitle:{
+    marginTop: 10,
+  },
+  searchBar:{
+    marginTop: 10,
+    display: 'flex',
+    alignItems: 'flex-start',
+    borderRadius: 9999,
+    backgroundColor: '#CECECE',
+    padding: 10,
+    width: 275,
+  },
+  SearchBarText:{
+    fontSize: 12,
+    marginBottom: 1,
+  },
+  bottomButton: {
+    position: 'absolute',
+    bottom: 100, // Ajustez cette valeur pour placer le bouton juste au-dessus de la navigation par onglets
+    backgroundColor: '#358510',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    width: 275,
+    alignSelf: 'center',
+    display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    padding: 16,
-  },
-  stepContainer: {
-    gap: 8,
-    paddingHorizontal: 16,
-    paddingBottom: 20,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-  },
-  welcomeButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    justifyContent: 'space-evenly',
   },
   buttonText: {
     color: '#FFFFFF',
+    fontWeight: 'bold',
     fontSize: 16,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  reactLogo: {
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
-    marginTop: Platform.OS === 'ios' ? 60 : 40,
+    textTransform: 'uppercase',
   },
 });
