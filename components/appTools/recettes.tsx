@@ -28,18 +28,17 @@ export default function Recettes({filtre, recette}: RecettesProps) {
 interface RecetteItem {
   strMeal: string;
   strMealThumb: string;
+  idMeal: string;
+}
+
+const RecetteLien = (recetteName:string, recettePhoto:string, idRecette:string) => {
+    router.push({ pathname: '/recettesDetails', params: {recetteName: recetteName, recettePhoto: recettePhoto, idRecette: idRecette}});
 }
 
 const RecetteCarte = ({item, index}: {item: RecetteItem, index: number})=>{
-    const handlePress = () => {
-        router.push({
-          pathname: '/recettesDetails',
-          params: { item: JSON.stringify(item) },
-        });
-      };
     return (
         <View style={styles.recetteCard}>
-            <Pressable style={styles.pressable} onPress={() => {router.push({ pathname: '/recettesDetails'})}}>
+            <Pressable style={styles.pressable} onPress={() => RecetteLien(item.strMeal, item.strMealThumb, item.idMeal)}>
                 <Image source={{uri: item.strMealThumb}} style={styles.recetteImage}/>
                 <Text style={styles.recetteTitre}>{item.strMeal}</Text>
             </Pressable>
