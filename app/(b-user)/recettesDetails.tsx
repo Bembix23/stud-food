@@ -11,7 +11,7 @@ export default function recettesDetails() {
         strInstructions: string;
         strMeal: string;
         strMealThumb: string;
-        [key: string]: any;
+        [key: string]: string;
     }
 
     const [recette, setRecette] = useState<Recette | null>();
