@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StatusBar, StyleSheet, Image, Pressable } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, Image, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { router, useLocalSearchParams } from 'expo-router'
 import { commonStyles, FontFamily } from '@/constants/Style';
