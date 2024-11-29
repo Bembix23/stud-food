@@ -1,11 +1,23 @@
 import { commonStyles } from '@/constants/Style';
 import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, View, Image, StyleSheet, Pressable} from 'react-native';
 
 export default function SecondStep() {
+  const completeTutorial = async () => {
+    try {
+      await AsyncStorage.setItem('tutorialCompleted', 'true');
+      router.push('../(b-user)/');
+    } catch (e) {
+      console.error('Failed to save the data to the storage');
+    }
+  };
+  const validateTuto = () => {
+    completeTutorial();
+  };
   return (
     <View style={ commonStyles.welcomeContainer }>
-      <Pressable style={ commonStyles.skipButton } onPress={() => {router.push('/')}}>
+      <Pressable style={ commonStyles.skipButton } onPress={validateTuto}>
         <Text style={commonStyles.skipButtonText}>Skip</Text>
       </Pressable>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>

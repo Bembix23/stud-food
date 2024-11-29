@@ -17,7 +17,7 @@ export default function ThirdStep() {
   };
   return (
     <View style={ commonStyles.welcomeContainer }>
-      <Pressable style={ commonStyles.skipButton } onPress={() => {router.push('/')}}>
+      <Pressable style={ commonStyles.skipButton } onPress={validateTuto}>
         <Text style={commonStyles.skipButtonText}>Skip</Text>
       </Pressable>
       <Text style={ commonStyles.welcomeTitle }>Stud'Food</Text>

@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StatusBar, StyleSheet, Image, Pressable } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, Image, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { router, useLocalSearchParams } from 'expo-router'
 import { commonStyles, FontFamily } from '@/constants/Style';
@@ -11,7 +11,7 @@ export default function recettesDetails() {
         strInstructions: string;
         strMeal: string;
         strMealThumb: string;
-        [key: string]: any;
+        [key: string]: string;
     }
 
     const [recette, setRecette] = useState<Recette | null>();

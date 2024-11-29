@@ -17,8 +17,7 @@ export const commonStyles = StyleSheet.create({
         backgroundColor: "#FFCB7E",
     },
     welcomeTitle: {
-        fontSize: 48, 
-        marginTop: 20, 
+        fontSize: 48,
         fontWeight: 400, 
         fontFamily: FontFamily.pattayaRegular, 
         color: "#FFA800", 
@@ -75,11 +74,16 @@ export const commonStyles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 20,
     },
-    profilePicture:{
-        marginTop: 30,
+    profilePictureContainer:{
+        marginTop: 40,
         width: 50,
         height: 50,
         left: "35%",
+    },
+    profilePicture: {
+      width: 50,
+      height: 50,
+      borderRadius: 50,
     },
 })
 

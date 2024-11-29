@@ -5,6 +5,7 @@ export default function UserLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index"/>
       <Stack.Screen name="recettesDetails"/>
+      <Stack.Screen name="profileScreen"/>
     </Stack>
   );
 }
