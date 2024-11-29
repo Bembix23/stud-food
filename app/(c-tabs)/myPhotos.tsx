@@ -5,6 +5,7 @@ import { collection, query, where, orderBy, getDocs, doc, deleteDoc } from "fire
 import { ref, deleteObject } from "firebase/storage";
 import CameraComponent, { CameraHandle } from '../../components/features/CameraComponent';
 import { commonStyles } from '../../constants/Style';
+import { router } from 'expo-router';
 
 interface Photo {
   id: string;
