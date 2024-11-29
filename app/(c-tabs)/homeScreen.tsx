@@ -54,8 +54,16 @@ export default function HomeScreen() {
       <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
       <View style={ styles.searchBar }>
         <TextInput placeholder='Cherche ton plat' placeholderTextColor={ 'gray' } style={ styles.SearchBarText }/>
+        <View style={ styles.SearchBarButton }>
+          <IconSymbol size={20} name="magnifyingglass" color="#000000" />
+        </View>
       </View>
-
+      <View style={{height:120}}>
+        <Filtres filtre={filtre} filtreActif={filtreActif} changementCategorie={changementCategorie}/>
+      </View>
+      <View>
+        <Recettes recette={recette} filtre={filtre}/>
+      </View>
     </View>
   );
 }
