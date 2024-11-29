@@ -5,21 +5,23 @@ import { commonStyles, FontFamily } from '@/constants/Style';
 import axios from 'axios';
 
 export default function recettesDetails() {
-    const {recetteName, recettePhoto, idRecette} = useLocalSearchParams<{recetteName?: string, recettePhoto?: string, idRecette?: string}>();
+    const {idRecette} = useLocalSearchParams<{idRecette?: string}>();
     interface Recette {
         strArea: string;
         strInstructions: string;
         strMeal: string;
+        strMealThumb: string;
+        [key: string]: any;
     }
 
-    const [recette, setRecette] = useState<Recette | null>(null);
+    const [recette, setRecette] = useState<Recette | null>();
     const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
         if (idRecette) {
             getRecetteData(idRecette);
         }
-    },[])
+    },[idRecette])
     
     const getRecetteData = async (id:string) =>{
         try{
@@ -31,7 +33,19 @@ export default function recettesDetails() {
         }catch (err: any){
           console.log('error: ',err.message);
         }
-      }
+    }
+
+    const indexIngredient = (recette: Recette | null) => {
+        if (!recette) return [];
+        let index = [];
+        for(let i = 1; i<=20; i++){
+            if(recette ['strIngredient'+i]){
+                index.push (i);
+            }
+        }
+        return index;
+    }
+
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{width:"100%"}}>
@@ -39,14 +53,41 @@ export default function recettesDetails() {
             <Pressable style={ styles.returnButton } onPress={() => {router.push('/homeScreen')}}>
                 <Text style={commonStyles.skipButtonText}>Retour</Text>
             </Pressable>
-            <Image source={{ uri: recettePhoto }} style={styles.recetteImage}/>
+            <Image source={{ uri: recette?.strMealThumb }} style={styles.recetteImage}/>
+            <Text style={styles.recetteTitle}>
+                {recette?.strMeal}
+            </Text>
+            <Text style={styles.recetteOrigin}>
+                {recette?.strArea}
+            </Text>
             {
-                loading ?(
+                loading? (
                     <Text style={{color:"white"}}>Chargement...</Text>
                 ):(
-                    <View>
-                        <Text style={styles.recetteTitle}>{recette?.strMeal}</Text>
-                        <Text style={{color:"white"}}>{recette?.strInstructions}</Text>
+                    <View style={styles.recetteContainer}>
+                        <Text style={styles.ingredientsWord}>
+                            Ingrédients
+                        </Text>
+                        <View>
+                            {
+                                recette && indexIngredient(recette).map(i=>{
+                                    return (
+                                        <View style={styles.elementListe}>
+                                            <View style={styles.pointListe}/>
+                                            <Text key={i}>
+                                                {recette?.['strIngredient'+i]} : {recette?.['strMeasure'+i]}
+                                            </Text>
+                                        </View>
+                                    )
+                                })
+                            }
+                        </View>
+                        <Text style={styles.recetteWord}>
+                            Recette
+                        </Text>
+                        <Text style={styles.recetteText}>
+                            {recette?.strInstructions}
+                        </Text>
                     </View>
                 )
             }
@@ -66,6 +107,15 @@ const styles = StyleSheet.create({
         borderRadius: 53,
         marginTop: 30,
     },
+    recetteContainer:{
+        display: "flex",
+        width: "100%",
+        marginLeft:"10%"
+    },
+    recetteOrigin:{
+        fontSize: 16,
+        fontWeight: 700,
+    },
     recetteTitle:{
         fontSize: 32, 
         marginTop: 20, 
@@ -74,4 +124,37 @@ const styles = StyleSheet.create({
         color: "#FFA800", 
         textAlign: 'center',
     },
+    recetteWord:{
+        fontSize: 24,
+        marginTop: 20,
+        fontWeight: 400,
+        color: "red",
+        fontFamily: FontFamily.fugazOneRegular,
+    },
+    recetteText:{
+        width: "80%",
+        textAlign: 'justify',
+        marginTop: 20,
+        marginBottom: 150,
+
+    },
+    ingredientsWord:{
+        fontSize: 24,
+        marginTop: 20,
+        fontWeight: 400,
+        color: "red",
+        fontFamily: FontFamily.fugazOneRegular,
+    },
+    pointListe:{
+        width: 6,
+        height: 6,
+        backgroundColor: "#FFA800",
+        borderRadius: 9999,
+        marginRight: 10,
+    },
+    elementListe:{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+    }
 })
