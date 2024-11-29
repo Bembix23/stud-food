@@ -31,14 +31,14 @@ interface RecetteItem {
   idMeal: string;
 }
 
-const RecetteLien = (recetteName:string, recettePhoto:string, idRecette:string) => {
-    router.push({ pathname: '/recettesDetails', params: {recetteName: recetteName, recettePhoto: recettePhoto, idRecette: idRecette}});
+const RecetteLien = (idRecette:string) => {
+    router.push({ pathname: '../(b-user)/recettesDetails', params: {idRecette: idRecette}});
 }
 
 const RecetteCarte = ({item, index}: {item: RecetteItem, index: number})=>{
     return (
         <View style={styles.recetteCard}>
-            <Pressable style={styles.pressable} onPress={() => RecetteLien(item.strMeal, item.strMealThumb, item.idMeal)}>
+            <Pressable style={styles.pressable} onPress={() => RecetteLien(item.idMeal)}>
                 <Image source={{uri: item.strMealThumb}} style={styles.recetteImage}/>
                 <Text style={styles.recetteTitre}>{item.strMeal}</Text>
             </Pressable>
@@ -49,6 +49,7 @@ const RecetteCarte = ({item, index}: {item: RecetteItem, index: number})=>{
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+        marginBottom: 425,
     },
     scrollView: {
         padding: 16,
