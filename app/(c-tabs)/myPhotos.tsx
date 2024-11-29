@@ -87,7 +87,12 @@ export default function MyPhotos() {
 
   return (
     <View style={commonStyles.homeContainer}>
-      <Image source={require('../../assets/images/photo-profil.png')} style={commonStyles.profilePicture}/>
+      <Pressable style={commonStyles.profilePictureContainer} onPress={() => {router.push('../(b-user)/profileScreen')}}>
+        <Image
+          source={require('../../assets/images/photo-profil.png')}
+          style={commonStyles.profilePicture}
+        />
+      </Pressable>
       <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
       <Text style={[commonStyles.stepTitle, styles.stepTitle]}>Mes Photos</Text>
 
