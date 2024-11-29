@@ -32,7 +32,7 @@ interface RecetteItem {
 }
 
 const RecetteLien = (idRecette:string) => {
-    router.push({ pathname: '/recettesDetails', params: {idRecette: idRecette}});
+    router.push({ pathname: '../(b-user)/recettesDetails', params: {idRecette: idRecette}});
 }
 
 const RecetteCarte = ({item, index}: {item: RecetteItem, index: number})=>{

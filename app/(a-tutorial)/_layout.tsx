@@ -10,7 +10,6 @@ export default function TutoLayout() {
       <Stack.Screen name="firstStep"/>
       <Stack.Screen name="secondStep"/>
       <Stack.Screen name="thirdStep"/>
-      <Stack.Screen name="+not-found"/>
     </Stack>
   );
 }

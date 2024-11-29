@@ -4,7 +4,7 @@ export default function UserLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index"/>
-      <Stack.Screen name="+not-found"/>
+      <Stack.Screen name="recettesDetails"/>
     </Stack>
   );
 }
