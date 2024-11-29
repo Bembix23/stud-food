@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, Button, Alert, Pressable } from 'react-n
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import { app } from '@/FirebaseConfig';
 import { router } from 'expo-router';
+import { commonStyles } from '@/constants/Style';
 
 const auth = getAuth(app);
 
@@ -41,6 +42,9 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.profileContainer}>
+      <Pressable style={ styles.returnButton } onPress={() => {router.push('/homeScreen')}}>
+        <Text style={commonStyles.skipButtonText}>Retour</Text>
+      </Pressable>
       <Image
         source={require('@/assets/images/photo-profil.png')}
         style={styles.profileImage}
@@ -54,6 +58,10 @@ export default function ProfileScreen() {
 }
 
 const styles = StyleSheet.create({
+  returnButton:{
+    marginTop: 30,
+    left: "-35%",
+  },
   centered: {
     flex: 1,
     justifyContent: 'center',
