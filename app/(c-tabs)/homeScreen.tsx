@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Platform, View, Pressable, Text, TextInput } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
-import CameraComponent from '@/components/features/CameraComponent';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { SearchBar } from 'react-native-screens';
 import React, { useEffect, useState } from 'react';
 import Filtres from '@/components/appTools/filtres';
 import axios from 'axios';
@@ -54,15 +54,6 @@ export default function HomeScreen() {
       <Text style={commonStyles.welcomeTitle}>Stud'Food</Text>
       <View style={ styles.searchBar }>
         <TextInput placeholder='Cherche ton plat' placeholderTextColor={ 'gray' } style={ styles.SearchBarText }/>
-        <View style={ styles.SearchBarButton }>
-          <IconSymbol size={20} name="magnifyingglass" color="#000000" />
-        </View>
-      </View>
-      <View style={{height:120}}>
-        <Filtres filtre={filtre} filtreActif={filtreActif} changementCategorie={changementCategorie}/>
-      </View>
-      <View>
-        <Recettes recette={recette} filtre={filtre}/>
       </View>
 
     </View>
@@ -96,7 +87,7 @@ const styles = StyleSheet.create({
   },
   bottomButton: {
     position: 'absolute',
-    bottom: 100, // Ajustez cette valeur pour placer le bouton juste au-dessus de la navigation par onglets
+    bottom: 100, 
     backgroundColor: '#358510',
     padding: 15,
     borderRadius: 10,
