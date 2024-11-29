@@ -9,7 +9,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import "../../stud-food/FirebaseConfig";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Empêche la splash screen de se cacher automatiquement avant le chargement des assets.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
