@@ -7,7 +7,7 @@ Notre application a pour vocation de donner aux étudiants envie de cuisiner, en
 
 Voici notre [Cahier des charges](https://docs.google.com/document/d/1LMwGFHyjZGPh85efb8uhyVH5SB99finGt9Q6c9XVMIs/edit?usp=sharing) qui pourra vous montrer ce que nous voulions réaliser pour cette application.
 
-Vous pouvez retrouver notre idée de départ pour cette application sur cette maquette [Figma]('https://www.figma.com/design/oJxHh7aM1TsbIRa9OR7UGm/STUDFOOD-DEV-MODE?node-id=0-1&t=CLYQ7w9dSAJNU4YW-1').
+Vous pouvez retrouver notre idée de départ pour cette application sur cette maquette [Figma](https://www.figma.com/design/oJxHh7aM1TsbIRa9OR7UGm/STUDFOOD-DEV-MODE?node-id=0-1&t=CLYQ7w9dSAJNU4YW-1).
 
 Voici les éléments qui nous ont permis de construire notre projet:
 - La technologie principale de notre projet est **React Native** et ses nombreuses bibliothèque. 
@@ -16,7 +16,7 @@ Voici les éléments qui nous ont permis de construire notre projet:
 - Nous avons construit notre Backend sur **Google Firebase**, notre base de donnée et notre storage y sont ainsi que notre système d'authentification. 
 - Pour récupérer les données des recettes, nous avons utilisé l'API **TheMealDB** qui donne suffisamment de détails.
 
-Nous avons aussi réalisé un diaporama pour présenter notre projet, vous pouvez le retrouver [ici]('https://www.canva.com/design/DAGX3N2Irt8/6XpKGl_nZ1-hFaJBIaTDYA/view?utm_content=DAGX3N2Irt8&utm_campaign=designshare&utm_medium=link&utm_source=editor') avec Canva.
+Nous avons aussi réalisé un diaporama pour présenter notre projet, vous pouvez le retrouver [ici](https://www.canva.com/design/DAGX3N2Irt8/6XpKGl_nZ1-hFaJBIaTDYA/view?utm_content=DAGX3N2Irt8&utm_campaign=designshare&utm_medium=link&utm_source=editor) avec Canva.
 
 La suite de ce README vous permettra d'installer notre projet sur votre ordinateur grâce à Expo.
 
