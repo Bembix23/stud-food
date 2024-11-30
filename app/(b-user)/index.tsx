@@ -1,5 +1,4 @@
-import { router } from 'expo-router';
-import { Text, View, Image, StyleSheet, Pressable} from 'react-native';
+import { Text, View } from 'react-native';
 import { commonStyles } from '@/constants/Style';
 import LoginComponent from '@/components/user/LoginComponent';
 

@@ -1,8 +1,7 @@
-import { Image, StyleSheet, Platform, View, Pressable, Text, TextInput } from 'react-native';
+import { Image, StyleSheet, View, Pressable, Text, TextInput } from 'react-native';
 import { router } from 'expo-router';
 import { commonStyles } from '@/constants/Style';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { SearchBar } from 'react-native-screens';
 import React, { useEffect, useState } from 'react';
 import Filtres from '@/components/appTools/filtres';
 import axios from 'axios';

@@ -9,7 +9,7 @@ export default function FirstStep() {
       await AsyncStorage.setItem('tutorialCompleted', 'true');
       router.push('../(b-user)/');
     } catch (e) {
-      console.error('Failed to save the data to the storage');
+      console.error('Echec de la sauvegarde des données');
     }
   };
   const validateTuto = () => {

@@ -4,7 +4,6 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import { auth } from '../../FirebaseConfig';
 import { FirebaseError } from 'firebase/app';
 import { useRouter } from 'expo-router';
-import { commonStyles } from "@/constants/Style";
 
 const LoginComponent = () => {
   const [email, setEmail] = React.useState<string>('');

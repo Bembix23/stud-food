@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity, Image, StyleSheet } from 'react-native'
-import React, { act } from 'react'
+import React from 'react'
 
 interface FiltreProps {
   filtre: { strCategory: string; strCategoryThumb: string }[];
