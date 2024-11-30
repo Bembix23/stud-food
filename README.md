@@ -7,7 +7,7 @@ Notre application a pour vocation de donner aux étudiants envie de cuisiner, en
 
 Voici notre [Cahier des charges](https://docs.google.com/document/d/1LMwGFHyjZGPh85efb8uhyVH5SB99finGt9Q6c9XVMIs/edit?usp=sharing) qui pourra vous montrer ce que nous voulions réaliser pour cette application.
 
-Vous pouvez retrouver notre idée de départ pour cette application sur cette maquette [Figma](https://www.figma.com/design/oJxHh7aM1TsbIRa9OR7UGm/STUDFOOD-DEV-MODE?node-id=0-1&t=CLYQ7w9dSAJNU4YW-1).
+Vous pouvez retrouver notre idée de départ pour cette application sur cette maquette [Figma](https://www.figma.com/design/oJxHh7aM1TsbIRa9OR7UGm/STUDFOOD?node-id=0-1&node-type=canvas&t=1DIG8tT3r1686QD3-0).
 
 Voici les éléments qui nous ont permis de construire notre projet:
 - La technologie principale de notre projet est **React Native** et ses nombreuses bibliothèque. 
